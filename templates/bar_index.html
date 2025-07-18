@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Bar</h1>
+<p>Enjoy our wide selection of drinks and cocktails at the bar.</p>
+
+<h2 class="mt-4">Bar Menu</h2>
+{% for category in categories %}
+  <h3 class="mt-3">{{ category.name }}</h3>
+  <p>{{ category.description }}</p>
+  <div class="row">
+    {% for item in category.items.all %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          {% if item.image %}
+            <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text fw-bold">${{ item.price }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-muted">No items in this category yet.</p>
+    {% endfor %}
+  </div>
+{% endfor %}
+
+<h2 class="mt-4">Bar Gallery</h2>
+<div class="row">
+  {% for image in gallery %}
+    <div class="col-md-3 mb-4">
+      <div class="card h-100">
+        <img src="{{ image.image.url }}" class="card-img-top" alt="Bar Gallery Image">
+        <div class="card-body">
+          <p class="card-text">{{ image.caption }}</p>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted">No bar gallery images yet.</p>
+  {% endfor %}
+</div>
+{% endblock %} 

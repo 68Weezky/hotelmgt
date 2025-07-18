@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Our Staff</h1>
+<p>Meet our dedicated team members and see their portfolios.</p>
+<div class="row">
+  {% for staff in staff_profiles %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        {% if staff.image %}
+          <img src="{{ staff.image.url }}" class="card-img-top" alt="{{ staff.name }}">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ staff.name }}</h5>
+          <p class="card-text"><strong>Role:</strong> {{ staff.role }}</p>
+          <p class="card-text">{{ staff.bio }}</p>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted">No staff profiles yet.</p>
+  {% endfor %}
+</div>
+{% endblock %} 

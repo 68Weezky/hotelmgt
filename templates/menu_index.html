@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Menu</h1>
+<p>Explore our delicious foods, beverages, and drinks.</p>
+{% for category in categories %}
+  <h2 class="mt-4">{{ category.name }}</h2>
+  <p>{{ category.description }}</p>
+  <div class="row">
+    {% for item in category.items.all %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          {% if item.image %}
+            <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text fw-bold">${{ item.price }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-muted">No items in this category yet.</p>
+    {% endfor %}
+  </div>
+{% endfor %}
+{% endblock %} 

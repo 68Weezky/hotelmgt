@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Conference Room</h1>
+<p>Host your meetings and conferences in our modern conference room.</p>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+{% if conference_room %}
+  <div class="card mb-4">
+    <div class="row g-0">
+      {% if conference_room.image %}
+      <div class="col-md-4">
+        <img src="{{ conference_room.image.url }}" class="img-fluid rounded-start" alt="{{ conference_room.name }}">
+      </div>
+      {% endif %}
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title">{{ conference_room.name }}</h2>
+          <p class="card-text">{{ conference_room.description }}</p>
+          <p class="card-text"><strong>Capacity:</strong> {{ conference_room.capacity }}</p>
+          <p class="card-text"><strong>Price per hour:</strong> ${{ conference_room.price_per_hour }}</p>
+          <p class="card-text"><strong>Amenities:</strong> {{ conference_room.amenities }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-5">
+    <h2>Book the Conference Room</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Book Now</button>
+    </form>
+  </div>
+{% else %}
+  <p class="text-muted">No conference room available at the moment.</p>
+{% endif %}
+{% endblock %} 

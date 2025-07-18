@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Lodging</h1>
+<p>Book a room and enjoy a comfortable stay with us.</p>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<div class="mb-5">
+  <h2>Book a Room</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Book Now</button>
+  </form>
+</div>
+
+{% for room_type in room_types %}
+  <div class="card mb-4">
+    <div class="row g-0">
+      {% if room_type.image %}
+      <div class="col-md-4">
+        <img src="{{ room_type.image.url }}" class="img-fluid rounded-start" alt="{{ room_type.name }}">
+      </div>
+      {% endif %}
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title">{{ room_type.name }}</h2>
+          <p class="card-text">{{ room_type.description }}</p>
+          <p class="card-text"><strong>Price per night:</strong> ${{ room_type.price_per_night }}</p>
+          <p class="card-text"><strong>Amenities:</strong> {{ room_type.amenities }}</p>
+          <h5>Rooms:</h5>
+          <ul>
+            {% for room in room_type.rooms.all %}
+              <li>Room {{ room.number }} {% if room.is_available %}<span class="badge bg-success">Available</span>{% else %}<span class="badge bg-danger">Booked</span>{% endif %}</li>
+            {% empty %}
+              <li class="text-muted">No rooms of this type yet.</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %} 

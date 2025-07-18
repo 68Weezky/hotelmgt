@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="text-center mb-4">
+    <img src="{% static 'hero.jpg' %}" class="img-fluid rounded shadow" alt="The White House Lounge" style="max-height: 400px; object-fit: cover; width: 100%;">
+</div>
+<div class="jumbotron text-center bg-light p-5 rounded">
+    <h1 class="display-4">Welcome to The White House Lounge</h1>
+    <p class="lead">Hospitality redefined: foods, beverages, drinks, lodging, bar, conference, and events—all in one place.</p>
+    <hr class="my-4">
+    <p>Enjoy our bar, book a room, or host your next event with us!</p>
+    <a class="btn btn-primary btn-lg" href="/lodging/" role="button">Book a Room</a>
+    <a class="btn btn-secondary btn-lg" href="/events/" role="button">See Events</a>
+</div>
+<div class="row mt-5">
+    <div class="col-md-4">
+        <h3>Bar & Drinks</h3>
+        <p>Enjoy a wide selection of beverages and cocktails in our modern bar.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Conference Room</h3>
+        <p>Host your meetings and conferences in our fully equipped conference room.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Outdoor Events</h3>
+        <p>We host and organize outdoor promotional events of all sorts.</p>
+    </div>
+</div>
+{% endblock %} 

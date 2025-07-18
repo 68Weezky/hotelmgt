@@ -1,0 +1,63 @@
+form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    margin-bottom: 2rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form input[type="time"],
+form input[type="password"],
+form select,
+form textarea {
+    border: 2px solid #007bff;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    transition: border-color 0.2s;
+    background: #f8faff;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="date"]:focus,
+form input[type="time"]:focus,
+form input[type="password"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #0056b3;
+    outline: none;
+    background: #eaf4ff;
+}
+
+form label {
+    font-weight: 600;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+form .btn-primary {
+    background: #007bff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+    transition: background 0.2s;
+}
+
+form .btn-primary:hover, form .btn-primary:focus {
+    background: #0056b3;
+}
+
+form .alert-success {
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+} 
