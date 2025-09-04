@@ -33,5 +33,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Serve uploaded media in both development and (small) production setups
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
