@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'whitelounge.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'whitelounge_db',
         'USER': 'rr',
         'PASSWORD': 'Weezky68',
